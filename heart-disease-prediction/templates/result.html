@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heart Disease Prediction Result</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #85f5a1, #e8f5e9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .result-box {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      border: 10px solid black;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 500px;
+      transition: transform 0.3s ease;
+    }
+    .result-box:hover {
+      transform: scale(1.05);
+    }
+    .success {
+      color: green;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .danger {
+      color: red;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .emoji {
+      font-size: 60px;
+      margin-bottom: 20px;
+    }
+    .back-btn {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      background: #00796b;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+    .back-btn:hover {
+      background: #004d40;
+    }
+  </style>
+</head>
+<body>
+  <div class="result-box">
+    {% if prediction == 0 %}
+      <div class="emoji">❤️</div>
+      <div class="success">No Heart Disease Detected</div>
+    {% elif prediction == 1 %}
+      <div class="emoji">⚠️</div>
+      <div class="danger">High Risk of Heart Disease</div>
+    {% else %}
+      <div class="emoji">⚠️</div>
+      <div class="danger">{{ prediction }}</div>
+    {% endif %}
+
+    <button class="back-btn" onclick="window.location.href='/'">🔙 Back to Home</button>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+

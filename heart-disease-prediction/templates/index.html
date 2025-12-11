@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heart Disease Prediction</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(to right, #adf4bf, #82efd8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: rgb(247, 245, 245);
+      padding: 40px;
+      border-radius: 15px;
+      border: 10px solid black;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+      width: 750px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #2c7a7b;
+      margin-bottom: 25px;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      text-align: left;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: #333;
+    }
+
+    input, select {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .full-width {
+      grid-column: span 2;
+    }
+
+    button {
+      grid-column: span 2;
+      background: #2c7a7b;
+      color: white;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 17px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #225e5f;
+    }
+
+    .history-btn {
+      margin-top: 10px;
+      grid-column: span 2;
+      background: #e63946;
+    }
+
+    .history-btn:hover {
+      background: #b92b35;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🫀 Heart Disease Prediction</h1>
+    
+    <form action="/predict" method="post">
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="Age" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="sex">Sex:</label>
+        <select id="sex" name="Sex" required>
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="chest_pain">Chest Pain Type:</label>
+        <select id="chest_pain" name="ChestPainType" required>
+          <option value="ATA">Typical Angina</option>
+          <option value="NAP">Non-Anginal Pain</option>
+          <option value="ASY">Asymptomatic</option>
+          <option value="TA">Atypical Angina</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="resting_bp">Resting Blood Pressure:</label>
+        <input type="number" id="resting_bp" name="RestingBP" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="chol">Cholesterol:</label>
+        <input type="number" id="chol" name="Cholesterol" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="fbs">Fasting Blood Sugar:</label>
+        <select id="fbs" name="FastingBS" required>
+          <option value="0">≤ 120 mg/dl</option>
+          <option value="1">> 120 mg/dl</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="resting_ecg">Resting ECG:</label>
+        <select id="resting_ecg" name="RestingECG" required>
+          <option value="Normal">Normal</option>
+          <option value="ST">ST</option>
+          <option value="LVH">LVH</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="max_hr">Max Heart Rate:</label>
+        <input type="number" id="max_hr" name="MaxHR" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="exercise_angina">Exercise Angina:</label>
+        <select id="exercise_angina" name="ExerciseAngina" required>
+          <option value="Y">Yes</option>
+          <option value="N">No</option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="oldpeak">Oldpeak (ST Depression):</label>
+        <input type="number" id="oldpeak" step="0.1" name="Oldpeak" required>
+      </div>
+      
+      <div class="form-group full-width">
+        <label for="st_slope">ST Slope:</label>
+        <select id="st_slope" name="ST_Slope" required>
+          <option value="Up">Upsloping</option>
+          <option value="Flat">Flat</option>
+          <option value="Down">Downsloping</option>
+        </select>
+      </div>
+      
+      <button type="submit">🔍 Predict</button>
+    </form>
+
+    <!-- View History Button -->
+    <form action="/history" method="get">
+      <button type="submit" class="history-btn">📜 View History</button>
+    </form>
+  </div>
+</body>
+</html>
+
+
+
